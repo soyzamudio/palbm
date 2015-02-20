@@ -1,7 +1,7 @@
 {
-  "name": "hapi-prototype",
-  "description": "Hapi Prototype Application",
-  "homepage": "https://github.com/coding-house-jan2015/hapi-prototype",
+  "name": "palbm",
+  "description": "palbm-app",
+  "homepage": "https://github.com/soyzamudio/palbm",
   "engines": {
     "node": "0.12.x"
   },
@@ -15,20 +15,22 @@
     "mongo",
     "mongoose"
   ],
-  "author": "Chyld Medford <chyld.medford@gmail.com>",
+  "author": "Jose Zamudio <jose@josezamudio.me>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/coding-house-jan2015/hapi-prototype.git"
+    "url": "git://github.com/soyzamudio/palbm.git"
   },
   "version": "1.0.0",
   "scripts": {
     "start": "node server/index.js",
-    "localstart": "MONGO_URL=mongodb://localhost/hapi-prototype PORT=3333 nodemon -e js,jade server/index.js",
+    "localstart": "MONGO_URL=mongodb://localhost/palbm PORT=3333 nodemon -e js,jade server/index.js",
     "clean": "rm -rf node_modules && rm -rf public && npm install && bower install && gulp build",
     "postinstall": "bower install && gulp build"
   },
   "license": "MIT",
   "dependencies": {
+    "async": "^0.9.0",
+    "aws-sdk": "^2.1.13",
     "good": "^5.1.1",
     "good-console": "^4.1.0",
     "hapi": "^8.2.0",
