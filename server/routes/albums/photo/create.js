@@ -12,7 +12,6 @@ module.exports = {
   handler: function(request, reply) {
     Album.findById(request.params.albumId, function(err, album) {
       var photos = [].concat(request.payload.photos);
-      console.log(photos);
       album.upload(photos, function() {
         album.update(album, function(err) {
           if (err) { console.log(err); }

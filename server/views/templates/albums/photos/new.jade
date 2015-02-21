@@ -1,10 +1,12 @@
 extends ../../../layouts/master
 block content
-  .container-fluid
+  .container
     .row
       .page-header
         h1 New Photo
-  form(method='post', action='/albums/#{album._id}/photo', enctype='multipart/form-data')
-    label Files
-    input(type='file', name='photos', multiple=true)
-    button(type='submit') Add Album
+      form.form-inline(method='post', action='/albums/#{album._id}/photo', enctype='multipart/form-data')
+        label File
+        input.form-control.form-group(type='file', name='photos', multiple=true)
+        button.form-control.btn.btn-primary(type='submit') Add Album
+    
+    

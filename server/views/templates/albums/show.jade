@@ -1,22 +1,28 @@
 extends ../../layouts/master
 block content
-  .container-fluid
-    .row
-      .col-md-12
-        .page-header
-          h1= album.name
-          p= album.date
-          a(href='/albums/#{album._id}/edit') Edit
-          a(href='/albums/#{album._id}/photo/new') Add
   .container
     .row
-      each photo in album.photos
-        .photo
-          img(src=photo)
-          h5
-            - var index = album.photos.indexOf(photo)
-              form(method='post', action='/albums/#{album._id}/#{index}/delete')
-                button.fa.fa-times 
-                
-              if index !== album.primary
-                button.fa.fa-file-image-o
+      .col-md-12.page-header(style='margin-bottom: 0px; border-bottom: 1px solid #dfdfdf;')
+        .col-md-12
+          h1 #{album.name} (#{album.photos.length})
+          p= album.date.toString()
+          a.btn.btn-primary.btn-sm(href='/albums/#{album._id}/edit') Edit
+          a.btn.btn-default.btn-sm(href='/albums/#{album._id}/photo/new') Add
+        
+  section#photo-container
+    .container
+      .row
+        .col-md-12
+          each photo in album.photos
+            .col-md-3.photo.page-header
+              form(method='post', action='/albums/#{album._id}/#{album.photos.indexOf(photo)}/delete')
+                button: i.fa.fa-times(style='z-index: 2')
+              .inner(style='background: url(#{photo}) no-repeat center center', data-photo=photo)
+  
+  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-body
+              
+            
+    

@@ -1,17 +1,23 @@
 extends ../../layouts/master
 block content
-  .container-fluid
+  .container
     .row
       .page-header
         h1 Album
-        a(href='/albums/new') Add New Album
+        a.btn.btn-default.btn-sm(href='/albums/new') Add New Album
         form(method='get', action='/albums')
           select(name='sort', onchange='submit()')
             option(value='') Sort By Date
             option(value='asc') Ascending
             option(value='desc') Descending
-  .container-fluid
-    .row
-      ul
-        each album in albums
-          li: a(href='/albums/#{album._id}')= album.name
+            
+  section#photo-container
+    .container
+      .row
+        .col-md-12
+          each album in albums
+            a(href='/albums/#{album._id}')
+              .col-md-3.photo.page-header
+                - var url = album.photos[album.primary]
+                .inner(style='background: url(#{url}) no-repeat center center')
+                h5= 'Album: ' + album.name
