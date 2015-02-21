@@ -13,5 +13,6 @@ module.exports = [
 
   {method: 'post', path: '/albums/{albumId}/{photoIndex}/delete', config: require('../routes/albums/photo/destroy')},
   {method: 'get', path: '/albums/{albumId}/photo/new', config: require('../routes/albums/photo/new')},
-  {method: 'post', path: '/albums/{albumId}/photo', config: require('../routes/albums/photo/create')}
+  {method: 'post', path: '/albums/{albumId}/photo', config: require('../routes/albums/photo/create')},
+  {method: 'post', path: '/albums/{albumId}/{photoIndex}/primary', config: require('../routes/albums/photo/primary')},
 ];

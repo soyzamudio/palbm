@@ -15,9 +15,12 @@ block content
         .col-md-12
           each photo in album.photos
             .col-md-3.photo.page-header
-              form(method='post', action='/albums/#{album._id}/#{album.photos.indexOf(photo)}/delete')
-                button: i.fa.fa-times(style='z-index: 2')
+              form.form-inline(method='post', action='/albums/#{album._id}/#{album.photos.indexOf(photo)}/delete')
+                button.btn.btn.primary.btn-sm: i.fa.fa-times(style='z-index: 2')
               .inner(style='background: url(#{photo}) no-repeat center center', data-photo=photo)
+              if album.photos.indexOf(photo) !== album.primary
+                form.form-inline(method='post', action='/albums/#{album._id}/#{album.photos.indexOf(photo)}/primary')
+                  button.btn.btn.default.btn-sm: i.fa.fa-file-o(style='z-index: 2')
   
   #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
     .modal-dialog

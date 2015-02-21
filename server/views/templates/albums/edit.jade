@@ -8,6 +8,9 @@ block content
       label Name
       input.form-control.form-group(type='text', name='name', value=album.name)
       label Date
-      input.form-control.form-group(type='date', name='date', value=album.date)
-      button.form-control.btn.btn-primary(type='submit') Edit Album
+      - var day = album.date.getDate()
+      - var month = album.date.getMonth()
+      - var year = album.date.getFullYear()
+        input.form-control.form-group(type='date', name='date', value='#{month} - #{day} - #{year}')
+        button.form-control.btn.btn-primary(type='submit') Edit Album
     
