@@ -1,0 +1,22 @@
+extends ../../layouts/master
+block content
+  .container-fluid
+    .row
+      .col-md-12
+        .page-header
+          h1= album.name
+          p= album.date
+          a(href='/albums/#{album._id}/edit') Edit
+          a(href='/albums/#{album._id}/photo/new') Add
+  .container
+    .row
+      each photo in album.photos
+        .photo
+          img(src=photo)
+          h5
+            - var index = album.photos.indexOf(photo)
+              form(method='post', action='/albums/#{album._id}/#{index}/delete')
+                button.fa.fa-times 
+                
+              if index !== album.primary
+                button.fa.fa-file-image-o

@@ -10,7 +10,8 @@ var albumSchema = mongoose.Schema({
   name: {type: String, required: true},
   date: {type: Date, required: true},
   createdAt: {type: Date, default: Date.now, required: true},
-  photos: [String]
+  photos: [String],
+  primary: {type: Number, default: 1}
 });
 
 albumSchema.methods.upload = function(photos, cb) {
@@ -24,9 +25,9 @@ function uploadIterator(photo, cb) {
   var base = path.basename(file, ext);
   base = _.kebabCase(base);
   ext = ext.toLowerCase();
-  file = base + ext;
+  file = this._id + '/' + base + ext;
   var url = 'https://' + process.env.AWS_BUCKET + '.s3.amazonaws.com/' + file;
-  this.photos.push(url);;
+  this.photos.push(url);
 
   var params = {Bucket: process.env.AWS_BUCKET, Key: file, Body: photo._data, ACL: 'public-read'};
   s3.putObject(params, cb);

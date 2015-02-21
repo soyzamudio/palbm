@@ -12,11 +12,12 @@ module.exports = {
   handler: function(request, reply) {
     var photos = [].concat(request.payload.photos);
     delete request.payload.photos;
-    var a1 = new Album(request.payload);
+    var album = new Album(request.payload);
 
-    a1.upload(photos, function(err) {
-      a1.save();
-      reply();
+    album.upload(photos, function() {
+      album.save(function() {
+        reply.redirect('/albums/' + album._id);
+      });
     });
   }
 };

@@ -1,0 +1,10 @@
+extends ../../../layouts/master
+block content
+  .container-fluid
+    .row
+      .page-header
+        h1 New Photo
+  form(method='post', action='/albums/#{album._id}/photo', enctype='multipart/form-data')
+    label Files
+    input(type='file', name='photos', multiple=true)
+    button(type='submit') Add Album
