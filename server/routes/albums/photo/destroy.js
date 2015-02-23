@@ -8,9 +8,9 @@ module.exports = {
       album.photos.splice(request.params.photoIndex, 1);
       album.primary = 0;
       album.update(album, function(err) {
-        if (err) { console.log(err) };
+        if (err) { console.log(err); }
         reply.redirect('/albums/' + request.params.albumId);
-      })
+      });
     });
   }
 };

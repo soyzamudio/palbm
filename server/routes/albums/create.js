@@ -12,6 +12,8 @@ module.exports = {
   handler: function(request, reply) {
     var photos = [].concat(request.payload.photos);
     delete request.payload.photos;
+
+    request.payload.userId = request.auth.credentials._id;
     var album = new Album(request.payload);
 
     album.upload(photos, function() {

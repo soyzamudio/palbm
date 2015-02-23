@@ -11,7 +11,8 @@ var albumSchema = mongoose.Schema({
   date: {type: Date, required: true},
   createdAt: {type: Date, default: Date.now, required: true},
   photos: [String],
-  primary: {type: Number, default: 1}
+  userId: {type: mongoose.Schema.ObjectId, ref: 'User'},
+  primary: {type: Number, default: 0}
 });
 
 albumSchema.methods.upload = function(photos, cb) {

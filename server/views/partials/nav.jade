@@ -9,4 +9,13 @@ nav.navbar.navbar-default.navbar-fixed-top
       a.navbar-brand(href='/') Palbm
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li: a(href='/albums'): i.fa.fa-camera-retro &nbsp; Album
+        li: a(href='/'): i.fa.fa-home &nbsp; Home
+        if !email
+          li: a(href='/register'): i.fa.fa-male &nbsp; Register
+          li: a(href='/login'): i.fa.fa-sign-in &nbsp; Login
+        else
+          li: a(href='/albums'): i.fa.fa-camera-retro &nbsp; Album
+          li
+            form(method='post', action='/logout')
+              button.btn.btn-danger Logout
+          li: a(href='#')= email || 'anonymous'

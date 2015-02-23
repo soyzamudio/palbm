@@ -18,6 +18,6 @@ module.exports = {
           reply.redirect('/albums/' + request.params.albumId);
         });
       });
-    })
+    });
   }
-}
+};
